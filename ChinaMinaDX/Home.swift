@@ -12,6 +12,7 @@ struct Home: View {
     @State private var password: String = ""
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     @State private var timeElapsed: Int = 0
+    @State static var signOn: Bool = false
     var body: some View {
         VStack {
             ZStack{
@@ -50,7 +51,7 @@ struct Home: View {
                             text: $username
                         )
                         Divider().background(Color.gray)
-                        TextField(
+                        SecureField(
                             "Password",
                             text: $password
                         )
@@ -58,7 +59,7 @@ struct Home: View {
                         
                         
                         Button("Sign on") {
-                            
+                            Home.signOn.toggle()
                         }
                         .padding(14)
                         .background(Color.blue)

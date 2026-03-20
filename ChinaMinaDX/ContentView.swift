@@ -9,7 +9,14 @@ import SwiftUI
 import Combine
 struct ContentView: View {
     var body: some View {
-        Home()
+        NavigationView {
+            if Home.signOn {
+                Victims()
+            }
+            else {
+                Home()
+            }
+        }
     }
 }
 #Preview{
