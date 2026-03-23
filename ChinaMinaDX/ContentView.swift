@@ -8,15 +8,14 @@
 import SwiftUI
 import Combine
 struct ContentView: View {
+    @State private var isLoggedIn = false
+    
     var body: some View {
-        NavigationView {
-            if Home.signOn {
-                Victims()
-            }
-            else {
-                Home()
-            }
-        }
+        if isLoggedIn {
+                    Victims()
+                } else {
+                    Home(isLoggedIn: $isLoggedIn) // Pass it with $
+                }
     }
 }
 #Preview{
