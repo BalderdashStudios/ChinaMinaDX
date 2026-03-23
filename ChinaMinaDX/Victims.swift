@@ -1,25 +1,27 @@
 import SwiftUI
 
 struct Victims: View {
-    @State private var searchText = ""
+    let data = JSONLoader.load()
     
-    let fruits = ["Apple", "Banana", "Cherry", "Date", "Elderberry",
-                  "Fig", "Grape", "Honeydew", "Kiwi", "Lemon"]
-    
-    var filteredFruits: [String] {
-        if searchText.isEmpty {
-            return fruits
-        } else {
-            return fruits.filter { $0.localizedCaseInsensitiveContains(searchText) }
-        }
-    }
     var body: some View {
-        NavigationStack {
-            List(filteredFruits, id: \.self) { fruit in
-                Text(fruit)
+        NavigationView {
+            List {
+                ForEach(data.keys.sorted(), id: \.self) { sheet in
+                    Section(header: Text(sheet)) {
+                        ForEach(data[sheet] ?? [], id: \.self) { row in
+                            
+                            VStack(alignment: .leading) {
+                                ForEach(row.keys.sorted(), id: \.self) { key in
+                                    Text("\(key): \(row[key] ?? "")")
+                                        .font(.caption)
+                                }
+                            }
+                            .padding(.vertical, 4)
+                        }
+                    }
+                }
             }
-            .searchable(text: $searchText, prompt: "Search fruits...")
-            .navigationTitle("Fruits")
+            .navigationTitle("Database")
         }
     }
 }
