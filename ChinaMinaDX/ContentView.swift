@@ -7,7 +7,8 @@
 
 import SwiftUI
 import Combine
-struct ContentView: View {
+struct ContentView: View
+{
     @State private var isLoggedIn = false
     
     var body: some View {
