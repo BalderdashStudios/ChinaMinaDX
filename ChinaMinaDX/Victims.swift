@@ -4,26 +4,38 @@ struct Victims: View {
     let records = loadPPDRecords()
  
     var body: some View {
-        NavigationView {
-            List(records) { record in
-                NavigationLink(destination: VictimDetailView(record: record)) {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(record.mainName ?? "Unknown Name")
-                            .font(.headline)
-                        if let status = record.detentionStatus {
-                            Text(status)
-                                .font(.caption)
-                                .foregroundColor(.secondary)
+        
+        ZStack{
+            Color.black
+            
+            MatrixRainView()
+            
+            NavigationView {
+                List(records) { record in
+                    NavigationLink(destination: VictimDetailView(record: record)) {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(record.mainName ?? "Unknown Name")
+                                .font(.headline)
+                            if let status = record.detentionStatus {
+                                Text(status)
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
                         }
+                        .padding(.vertical, 4)
                     }
-                    .padding(.vertical, 4)
                 }
-            }
-            .navigationTitle("PPD Database")
-            .onAppear {
-                print("Victims loaded \(records.count) records")
+                .navigationTitle("PPD Database")
+                .scrollContentBackground(.hidden)
+                .onAppear {
+                    print("Victims loaded \(records.count) records")
+                }
+
             }
         }
+        .ignoresSafeArea()
+        
+
     }
 }
  
