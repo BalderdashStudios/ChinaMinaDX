@@ -4,37 +4,43 @@ struct Victims: View {
     let records = loadPPDRecords()
  
     var body: some View {
-        
         ZStack{
-            Color.black
             
-            MatrixRainView()
-            
-            NavigationView {
-                List(records) { record in
-                    NavigationLink(destination: VictimDetailView(record: record)) {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text(record.mainName ?? "Unknown Name")
-                                .font(.headline)
-                            if let status = record.detentionStatus {
-                                Text(status)
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
+                ZStack{
+                    Color.black
+                    
+                    MatrixRainView()
+                    NavigationStack {
+                    
+                    List(records) { record in
+                        NavigationLink(destination: VictimDetailView(record: record)) {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(record.mainName ?? "Unknown Name")
+                                    .font(.headline)
+                                    .foregroundColor(Color.white)
+                                if let status = record.detentionStatus {
+                                    Text(status)
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                }
                             }
+                            .padding(.vertical, 4)
+                            .containerBackground(.clear, for: .navigation)
                         }
-                        .padding(.vertical, 4)
+                        .listRowBackground(Color.clear)
                     }
+                    .navigationTitle(Text("PPD Database").foregroundColor(.white))
+                        
+                    .scrollContentBackground(.hidden)
+                    .onAppear {
+                        print("Victims loaded \(records.count) records")
+                    }
+                    
                 }
-                .navigationTitle("PPD Database")
-                .scrollContentBackground(.hidden)
-                .onAppear {
-                    print("Victims loaded \(records.count) records")
-                }
-
             }
+            .ignoresSafeArea()
+            
         }
-        .ignoresSafeArea()
-        
 
     }
 }
