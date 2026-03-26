@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Combine
+internal import Combine
 struct ContentView: View
 {
     @State private var isLoggedIn = false
@@ -21,6 +21,10 @@ struct ContentView: View
         }
         else if screen2 {
             //ChatRoom()
+            ZStack {
+                MatrixRainView()
+                CookieClicker()
+            }
         }
     }
 }
