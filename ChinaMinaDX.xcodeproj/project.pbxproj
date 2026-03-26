@@ -26,6 +26,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		7524C1E22F75B54A00E90888 /* FortuneCookieClicker */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = FortuneCookieClicker;
+			sourceTree = "<group>";
+		};
 		75E6538D2F69CB3700099A9A /* ChinaMinaDX */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -53,6 +58,7 @@
 				75E2EAAD2F7454CD00296A7C /* matrix code nfi.ttf */,
 				75E6538D2F69CB3700099A9A /* ChinaMinaDX */,
 				75E6538C2F69CB3700099A9A /* Products */,
+				7524C1E22F75B54A00E90888 /* FortuneCookieClicker */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +86,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				7524C1E22F75B54A00E90888 /* FortuneCookieClicker */,
 				75E6538D2F69CB3700099A9A /* ChinaMinaDX */,
 			);
 			name = ChinaMinaDX;
