@@ -21,7 +21,7 @@ struct Victims: View {
                                 if let status = record.detentionStatus {
                                     Text(status)
                                         .font(.caption)
-                                        .foregroundColor(.secondary)
+                                        .foregroundColor(.white)
                                 }
                             }
                             .padding(.vertical, 4)
@@ -96,7 +96,7 @@ struct VictimDetailView: View {
                 section("Summary") {
                     Text(summary)
                         .font(.body)
-                        .foregroundColor(.primary)
+                        .foregroundColor(.white)
                 }
             }
  
@@ -104,12 +104,15 @@ struct VictimDetailView: View {
                 section("Timeline") {
                     Text(timeline)
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.white)
                 }
             }
         }
         .navigationTitle(record.mainName ?? "Detail")
         .navigationBarTitleDisplayMode(.large)
+        .listRowBackground(Color.clear)
+        .scrollContentBackground(.hidden)
+        .containerBackground(.clear, for: .navigation)
     }
  
     @ViewBuilder
