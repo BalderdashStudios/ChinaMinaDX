@@ -10,13 +10,18 @@ import Combine
 struct ContentView: View
 {
     @State private var isLoggedIn = false
+    @State private var screen2 = false
     //Ider is a chud
     var body: some View {
-        if isLoggedIn {
-                    Victims()
-                } else {
-                    Home(isLoggedIn: $isLoggedIn) // Pass it with $
-                }
+        if !isLoggedIn {
+            Home(isLoggedIn: $isLoggedIn)
+        }
+        else if isLoggedIn{
+            Victims()
+        }
+        else if screen2 {
+            //ChatRoom()
+        }
     }
 }
 #Preview{

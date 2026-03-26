@@ -2,8 +2,11 @@ import SwiftUI
  
 struct Victims: View {
     let records = loadPPDRecords()
+    @State private var alert1 = true
+    @State private var alert2 = false
  
     var body: some View {
+        
         ZStack{
             
                 ZStack{
@@ -37,6 +40,24 @@ struct Victims: View {
                     }
                     
                 }
+                    .alert("Important Message!!!!", isPresented: $alert1) {
+                                // Add custom buttons here. A default "OK" button is provided otherwise.
+                        Button("在窃取您的", role: .cancel) { alert2.toggle()}
+                            } message: {
+                                // Add a detailed message text.
+                                Text("YOUR您的 DATA hAs BEEN SEC在URED BY THE CCP")
+                            }
+                    //Alert 2
+                            .alert("Important Message!!!!", isPresented: $alert2) {
+                                        // Add custom buttons here. A default "OK" button is provided otherwise.
+                                Button("在窃取您的", role: .cancel) {
+                                    
+                                    }
+                                    } message: {
+                                        // Add a detailed message text.
+                                        Text("Click点击the升级upgrade入数button 界面界面to re-enter the data entry interface.")
+                                    }
+                    
             }
             .ignoresSafeArea()
             
