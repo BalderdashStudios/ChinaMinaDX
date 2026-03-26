@@ -22,8 +22,8 @@ struct ContentView: View
         else if screen2 {
             //ChatRoom()
             ZStack {
-                MatrixRainView()
                 CookieClicker()
+                MatrixRainView()
             }
         }
     }
