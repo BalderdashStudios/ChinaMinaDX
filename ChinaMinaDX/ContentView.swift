@@ -10,7 +10,7 @@ import Combine
 struct ContentView: View
 {
     @State private var isLoggedIn = false
-    
+    //Ider is a chud
     var body: some View {
         if isLoggedIn {
                     Victims()
