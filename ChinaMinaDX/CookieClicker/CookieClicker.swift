@@ -6,7 +6,7 @@
 //
 import SwiftUI
 internal import Combine
-import Vortex
+//import Vortex
 
 struct CookieClicker: View {
     
@@ -53,66 +53,66 @@ struct CookieClicker: View {
                             }
                     }
                     
-                    VortexViewReader { proxy in
                     Text("COOKIES LEFT = " + String(counter))
-                      //  .font(Font.custom("Retro Gaming", size: 40))
+                    //  .font(Font.custom("Retro Gaming", size: 40))
                         .padding(30)
                         .background(RoundedRectangle(cornerRadius: 50).fill(Color.white))
                         .foregroundColor(.black)
                     Text("REMOVE COOKIES")
-                       // .font(Font.custom("Retro Gaming", size: 40))
+                    // .font(Font.custom("Retro Gaming", size: 40))
                         .padding(30)
                         .background(RoundedRectangle(cornerRadius: 50).fill(Color.white))
                         .foregroundColor(.black)
-                   ZStack() {
-                       VortexView(VortexSystem(
-                        tags: ["square", "circle"],
-                        birthRate: 0,
-                        lifespan: 2,
-                        speed: 0.7,
-                        speedVariation: 0.5,
-                        angleRange: .degrees(90),
-                        acceleration: [0, 1],
-                        angularSpeedVariation: [4, 4, 4],
-                        colors: .random(.orange, .brown),
-                        size: 0.5,
-                        sizeVariation: 0.5
-                    )) {
-                           Rectangle()
-                               .fill(.orange)
-                               .frame(width: 16, height: 16)
-                               .tag("square")
-                           
-                           Circle()
-                               .fill(.orange)
-                               .frame(width: 16)
-                               .tag("circle")
-                       }
-                       .zIndex(1)
-                       .allowsHitTesting(false)
-                       
-                       Button()  {
-                           counter -= 1
-                           updateCookieSprite(int: counter)
-                           proxy.burst()
-                       }
-                       label: {
-                           Image(cookieState)
-                               .resizable()
-                               .interpolation(.none)
-                               .scaledToFill()
-                               .frame(width: 300, height: 300)
-                               //.interpolation(.none)
-                               .shadow(radius: 1, x: 5, y: 5)
-                       }
-                       
-                       
-                           
-                           
+                    ZStack() {
+//                        VortexView(VortexSystem(
+//                            tags: ["square", "circle"],
+//                            birthRate: 0,
+//                            lifespan: 2,
+//                            speed: 0.7,
+//                            speedVariation: 0.5,
+//                            angleRange: .degrees(90),
+//                            acceleration: [0, 1],
+//                            angularSpeedVariation: [4, 4, 4],
+//                            colors: .random(.orange, .brown),
+//                            size: 0.5,
+//                            sizeVariation: 0.5
+//                        )) {
+//                            Rectangle()
+//                                .fill(.orange)
+//                                .frame(width: 16, height: 16)
+//                                .tag("square")
+//                            
+//                            Circle()
+//                                .fill(.orange)
+//                                .frame(width: 16)
+//                                .tag("circle")
+//                        }
+//                        .zIndex(1)
+//                        .allowsHitTesting(false)
+                        
+                        Button()  {
+                            counter -= 1
+                            updateCookieSprite(int: counter)
+                            //proxy.burst()
                         }
+                        label: {
+                            Image(cookieState)
+                                .resizable()
+                                .interpolation(.none)
+                                .scaledToFill()
+                                .frame(width: 300, height: 300)
+                            //.interpolation(.none)
+                                .shadow(radius: 1, x: 5, y: 5)
+                        }
+                        
+                        
+                        
+                        
+                    }
+                    //VortexViewReader { proxy in
                     
                         //Button("Burst", action: proxy.burst)
-                    }
+                   // }
                     
                     //.font(Font.custom("Retro Gaming", size: 30))
                     .padding(10)

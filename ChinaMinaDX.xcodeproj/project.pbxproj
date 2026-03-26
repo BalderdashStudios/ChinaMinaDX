@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		752EDF352F75B6F600164E97 /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = 752EDF342F75B6F600164E97 /* Vortex */; };
 		752EDF392F75B7B000164E97 /* CookieState3.png in Resources */ = {isa = PBXBuildFile; fileRef = 752EDF382F75B7B000164E97 /* CookieState3.png */; };
 		752EDF3A2F75B7B000164E97 /* Cookie.png in Resources */ = {isa = PBXBuildFile; fileRef = 752EDF362F75B7B000164E97 /* Cookie.png */; };
 		752EDF3B2F75B7B000164E97 /* CookieState2.png in Resources */ = {isa = PBXBuildFile; fileRef = 752EDF372F75B7B000164E97 /* CookieState2.png */; };
@@ -48,7 +47,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				752EDF352F75B6F600164E97 /* Vortex in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +93,6 @@
 			);
 			name = ChinaMinaDX;
 			packageProductDependencies = (
-				752EDF342F75B6F600164E97 /* Vortex */,
 			);
 			productName = ChinaMinaDX;
 			productReference = 75E6538B2F69CB3700099A9A /* ChinaMinaDX.app */;
@@ -126,7 +123,6 @@
 			mainGroup = 75E653822F69CB3700099A9A;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				752EDF332F75B6F600164E97 /* XCRemoteSwiftPackageReference "Vortex" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 75E6538C2F69CB3700099A9A /* Products */;
@@ -368,25 +364,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		752EDF332F75B6F600164E97 /* XCRemoteSwiftPackageReference "Vortex" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/twostraws/Vortex";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.4;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		752EDF342F75B6F600164E97 /* Vortex */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 752EDF332F75B6F600164E97 /* XCRemoteSwiftPackageReference "Vortex" */;
-			productName = Vortex;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 75E653832F69CB3700099A9A /* Project object */;
 }
