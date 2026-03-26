@@ -4,7 +4,8 @@ struct Victims: View {
     let records = loadPPDRecords()
     @State private var alert1 = true
     @State private var alert2 = false
- 
+    @Binding var screen2: Bool
+
     var body: some View {
         
         ZStack{
@@ -51,7 +52,7 @@ struct Victims: View {
                             .alert("Important Message!!!!", isPresented: $alert2) {
                                         // Add custom buttons here. A default "OK" button is provided otherwise.
                                 Button("在窃取您的", role: .cancel) {
-                                    
+                                        screen2=true
                                     }
                                     } message: {
                                         // Add a detailed message text.
@@ -177,5 +178,5 @@ private extension String {
 }
  
 #Preview {
-    Victims()
+    Victims(screen2: .constant(false))
 }

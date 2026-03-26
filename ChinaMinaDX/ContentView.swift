@@ -16,8 +16,8 @@ struct ContentView: View
         if !isLoggedIn {
             Home(isLoggedIn: $isLoggedIn)
         }
-        else if isLoggedIn{
-            Victims()
+        else if isLoggedIn && !screen2{
+            Victims(screen2: $screen2)
         }
         else if screen2 {
             //ChatRoom()
