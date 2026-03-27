@@ -11,6 +11,7 @@
 		752EDF3A2F75B7B000164E97 /* Cookie.png in Resources */ = {isa = PBXBuildFile; fileRef = 752EDF362F75B7B000164E97 /* Cookie.png */; };
 		752EDF3B2F75B7B000164E97 /* CookieState2.png in Resources */ = {isa = PBXBuildFile; fileRef = 752EDF372F75B7B000164E97 /* CookieState2.png */; };
 		752EDF822F75BDB500164E97 /* Cookies.png in Resources */ = {isa = PBXBuildFile; fileRef = 752EDF812F75BDB500164E97 /* Cookies.png */; };
+		759548922F76EEB1004D4B8F /* FBIHacked.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 759548912F76EEB1004D4B8F /* FBIHacked.jpg */; };
 		75E2EAAE2F7454CD00296A7C /* matrix code nfi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75E2EAAD2F7454CD00296A7C /* matrix code nfi.ttf */; };
 /* End PBXBuildFile section */
 
@@ -19,6 +20,7 @@
 		752EDF372F75B7B000164E97 /* CookieState2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CookieState2.png; sourceTree = "<group>"; };
 		752EDF382F75B7B000164E97 /* CookieState3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CookieState3.png; sourceTree = "<group>"; };
 		752EDF812F75BDB500164E97 /* Cookies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cookies.png; sourceTree = "<group>"; };
+		759548912F76EEB1004D4B8F /* FBIHacked.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FBIHacked.jpg; sourceTree = "<group>"; };
 		75E2EAAD2F7454CD00296A7C /* matrix code nfi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "matrix code nfi.ttf"; sourceTree = "<group>"; };
 		75E6538B2F69CB3700099A9A /* ChinaMinaDX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChinaMinaDX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -65,6 +67,7 @@
 				752EDF372F75B7B000164E97 /* CookieState2.png */,
 				752EDF382F75B7B000164E97 /* CookieState3.png */,
 				752EDF812F75BDB500164E97 /* Cookies.png */,
+				759548912F76EEB1004D4B8F /* FBIHacked.jpg */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				752EDF392F75B7B000164E97 /* CookieState3.png in Resources */,
+				759548922F76EEB1004D4B8F /* FBIHacked.jpg in Resources */,
 				752EDF3A2F75B7B000164E97 /* Cookie.png in Resources */,
 				752EDF3B2F75B7B000164E97 /* CookieState2.png in Resources */,
 				75E2EAAE2F7454CD00296A7C /* matrix code nfi.ttf in Resources */,

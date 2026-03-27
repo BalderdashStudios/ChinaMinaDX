@@ -17,6 +17,10 @@ struct CookieClicker: View {
     
     @State private var cookieState = "Cookie"
     
+    @Binding var screen3: Bool
+    
+    @Binding var userWinState: Int
+    
     let timer2 = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -120,11 +124,13 @@ struct CookieClicker: View {
                    // .foregroundColor(.white)
                 }
                 else {
-                    Text("YOU DEFEATED THE CCP!")
+                    Text("COOKIES DELEATED!")
                        // .font(Font.custom("Retro Gaming", size: 40))
                         .padding(40)
-                    Button("Do It Again") {
+                    Button("STAGE 2") {
                         //resetGame()
+                        screen3=true
+                        userWinState = 1
                     }
                   //  .font(Font.custom("Retro Gaming", size: 30))
                     .padding(10)
@@ -133,10 +139,11 @@ struct CookieClicker: View {
                 }
             }
             else {
-                Text("YOU WERE DEFEATED BY THE CCP!")
+                Text("COOKIES UPLOADED!")
                   //  .font(Font.custom("Retro Gaming", size: 40))
                     .padding(40)
-                Button("Do It Again") {
+                Button("STAGE 2") {
+                    screen3=true
                     //resetGame()
                 }
              //   .font(Font.custom("Retro Gaming", size: 30))
@@ -161,6 +168,6 @@ struct CookieClicker: View {
 
 struct CookieClicker_Previews: PreviewProvider {
     static var previews: some View {
-        CookieClicker()
+        CookieClicker(screen3: .constant(false), userWinState: .constant(0))
     }
 }
