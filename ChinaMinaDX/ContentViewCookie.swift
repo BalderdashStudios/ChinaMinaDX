@@ -10,6 +10,8 @@ internal import Combine
 struct ContentViewCookie: View
 {
     @Binding var screen4: Bool
+    @Binding var userWinState: Int
+    @State private var cookiesThwarted = 0
     
     @State private var isLoggedIn = false
     @State private var screen2 = false
@@ -39,7 +41,7 @@ struct ContentViewCookie: View
     var body: some View {
         
         VStack {
-            Text("Time left (Seconds): " + String(timeLeft))
+            Text("Time left: " + String(timeLeft) + " seconds.")
                 .font(.largeTitle)
                 .onReceive(timer, perform:  { time in
                     if timeLeft>=0{
@@ -47,16 +49,19 @@ struct ContentViewCookie: View
                         isPressTwo = true
                     }
                 })
-            ZStack(alignment: .leading) {
-                Rectangle()
-                    .frame(width: 300, height: 20)
-                    .opacity(0.3)
-                    .foregroundColor(.gray)
-                Rectangle()
-                    .frame(width: progress2 * 300, height: 20)
-                    .foregroundColor(.green)
-                    .animation(.easeInOut, value: progress2)
-            }
+            Text("Cookies Thwarted: " + String(cookiesThwarted))
+                .font(.largeTitle)
+
+//            ZStack(alignment: .leading) {
+//                Rectangle()
+//                    .frame(width: 300, height: 20)
+//                    .opacity(0.3)
+//                    .foregroundColor(.gray)
+//                Rectangle()
+//                    .frame(width: progress2 * 300, height: 20)
+//                    .foregroundColor(.green)
+//                    .animation(.easeInOut, value: progress2)
+//            }
             Button(){
                 falling4 = -900.0
                 falling5 = CGFloat.random(in: -100.0...100.0)
@@ -108,6 +113,7 @@ struct ContentViewCookie: View
                 falling2 = -900.0
                 falling3 = CGFloat.random(in: -100.0...100.0)
                 progress2+=0.01
+                cookiesThwarted += 1
                 
                 
             }
@@ -129,7 +135,10 @@ struct ContentViewCookie: View
                     
                 }
                 if timeLeft==0{
-                    screen4=true
+                    if cookiesThwarted >= 3 {
+                        userWinState += 1
+                    }
+                        screen4=true
                 }
             })
         }
@@ -137,7 +146,7 @@ struct ContentViewCookie: View
         }
 }//
 #Preview{
-    ContentViewCookie(screen4: .constant(false))
+    ContentViewCookie(screen4: .constant(false),userWinState: .constant(1))
 }
 
 

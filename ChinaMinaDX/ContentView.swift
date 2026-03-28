@@ -31,7 +31,7 @@ struct ContentView: View
         }
         else if screen3 && !screen4{
             ZStack {
-                ContentViewCookie(screen4: $screen4)
+                ContentViewCookie(screen4: $screen4, userWinState: $userWinState)
                 MatrixRainView()
             }
         }
