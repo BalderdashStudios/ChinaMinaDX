@@ -8,6 +8,9 @@
 import SwiftUI
 internal import Combine
 struct Home: View {
+    //Alerts
+    @State private var alert1 = false
+    
     @State private var username: String = ""
     @State private var password: String = ""
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
@@ -30,18 +33,28 @@ struct Home: View {
                     .blur(radius: 10, opaque: true)
                     .opacity(timeElapsed == Int.random(in: 0..<10) ? 0.0 : 1.0)
                
-                    
-                Text(timeElapsed == Int.random(in: 0..<15) ? "我们正在窃取您的数据。" : "Good afternoon, \nIder")
-                    .onReceive(timer) { _ in
-                        timeElapsed += 1
-                        if timeElapsed==25{
-                            timeElapsed = 0
-                        }
+                HStack() {
+                    Text("FC BANKING")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .frame(maxHeight: .infinity, alignment: .topLeading)
+                        .foregroundColor(.black)
+                        .padding()
+                    if username != ""{
+                        
+                        Text(timeElapsed == Int.random(in: 0..<15) ? "我们正在窃取您的数据。" : "Good afternoon, \n" + username)
+                            .onReceive(timer) { _ in
+                                timeElapsed += 1
+                                if timeElapsed==25{
+                                    timeElapsed = 0
+                                }
+                            }
+                            .font(.largeTitle)
+                            .frame(maxHeight: .infinity, alignment: .topLeading)
+                            .foregroundColor(.black)
+                            .padding()
                     }
-                    .font(.largeTitle)
-                    .frame(maxHeight: .infinity, alignment: .topLeading)
-                    .foregroundColor(.black)
-                    .padding()
+                }
                 
                 
                 VStack() {
@@ -57,27 +70,35 @@ struct Home: View {
                         )
                         Divider().background(Color.gray)
                         
-                        
-                        Button("Sign on") {
-                            isLoggedIn = true
+                        if username != "" && password != "" {
+                            Button("Sign on") {
+                                isLoggedIn = true
+                            }
+                            .padding(14)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(50)
                         }
-                        .padding(14)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(50)
                         
                         
                         
                         HStack() {
                             Button("Forgot username?") {
-                                
+                                alert1.toggle()
                             }
                             .foregroundColor(.blue)
                             Button("Forgot password?") {
-                                
+                                alert1.toggle()
                             }
                             .foregroundColor(.blue)
                         }
+                        .alert("Urgent Message:", isPresented: $alert1) {
+                                    // Add custom buttons here. A default "OK" button is provided otherwise.
+                            Button("在窃取您的", role: .cancel) { }
+                                } message: {
+                                    // Add a detailed message text.
+                                    Text("Just remember it bro.")
+                                }
                         
                     }
                     .padding()
