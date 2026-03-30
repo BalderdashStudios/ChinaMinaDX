@@ -14,13 +14,14 @@ struct ContentView: View
     @State private var screen3 = false
     @State private var screen4 = false
     @State private var userWinState = 0
-    //Ider is a chud
+    @State private var userData: UserData = UserData(userName: "",passWord: "")
+    
     var body: some View {
         if !isLoggedIn {
-            Home(isLoggedIn: $isLoggedIn)
+            Home(isLoggedIn: $isLoggedIn, userData: $userData)
         }
         else if isLoggedIn && !screen2{
-            Victims(screen2: $screen2)
+            Victims(screen2: $screen2, userData: $userData)
         }
         else if screen2  && !screen3{
             //ChatRoom()
@@ -37,7 +38,7 @@ struct ContentView: View
         }
         else if screen4 {
             ZStack {
-                EndScreen(userWinState: userWinState)
+                EndScreen(userWinState: userWinState, userData: $userData)
             }
         }
     }

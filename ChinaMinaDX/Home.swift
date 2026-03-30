@@ -11,11 +11,14 @@ struct Home: View {
     //Alerts
     @State private var alert1 = false
     
+    
     @State private var username: String = ""
     @State private var password: String = ""
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     @State private var timeElapsed: Int = 0
     @Binding var isLoggedIn: Bool
+    @Binding var userData : UserData
+    
     var body: some View {
         VStack {
             ZStack{
@@ -72,6 +75,7 @@ struct Home: View {
                         
                         if username != "" && password != "" {
                             Button("Sign on") {
+                                 userData = UserData(userName: username, passWord: password)
                                 isLoggedIn = true
                             }
                             .padding(14)
@@ -153,5 +157,5 @@ struct Home: View {
     }
 }
 #Preview {
-    Home(isLoggedIn: .constant(false))
+    Home(isLoggedIn: .constant(false), userData: .constant(UserData(userName: "", passWord: "")))
 }

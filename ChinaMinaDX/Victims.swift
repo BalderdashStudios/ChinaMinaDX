@@ -5,6 +5,8 @@ struct Victims: View {
     @State private var alert1 = true
     @State private var alert2 = false
     @Binding var screen2: Bool
+    
+    @Binding var userData : UserData
 
     var body: some View {
         
@@ -41,7 +43,7 @@ struct Victims: View {
                     }
                     
                 }
-                    .alert("Important Message!!!!", isPresented: $alert1) {
+                    .alert(userData.userName, isPresented: $alert1) {
                                 // Add custom buttons here. A default "OK" button is provided otherwise.
                         Button("在窃取您的", role: .cancel) { alert2.toggle()}
                             } message: {
@@ -178,5 +180,5 @@ private extension String {
 }
  
 #Preview {
-    Victims(screen2: .constant(false))
+    Victims(screen2: .constant(false), userData: .constant(UserData(userName: "Ider", passWord: "")))
 }
