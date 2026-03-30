@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		746846C52F7A0E6C00EA9099 /* XI.png in Resources */ = {isa = PBXBuildFile; fileRef = 746846C42F7A0E6C00EA9099 /* XI.png */; };
+		746846C72F7A10CF00EA9099 /* notification.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 746846C62F7A10CF00EA9099 /* notification.mp3 */; };
 		752EDF392F75B7B000164E97 /* CookieState3.png in Resources */ = {isa = PBXBuildFile; fileRef = 752EDF382F75B7B000164E97 /* CookieState3.png */; };
 		752EDF3A2F75B7B000164E97 /* Cookie.png in Resources */ = {isa = PBXBuildFile; fileRef = 752EDF362F75B7B000164E97 /* Cookie.png */; };
 		752EDF3B2F75B7B000164E97 /* CookieState2.png in Resources */ = {isa = PBXBuildFile; fileRef = 752EDF372F75B7B000164E97 /* CookieState2.png */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		746846C42F7A0E6C00EA9099 /* XI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XI.png; sourceTree = "<group>"; };
+		746846C62F7A10CF00EA9099 /* notification.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = notification.mp3; sourceTree = "<group>"; };
 		752EDF362F75B7B000164E97 /* Cookie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cookie.png; sourceTree = "<group>"; };
 		752EDF372F75B7B000164E97 /* CookieState2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CookieState2.png; sourceTree = "<group>"; };
 		752EDF382F75B7B000164E97 /* CookieState3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CookieState3.png; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				752EDF812F75BDB500164E97 /* Cookies.png */,
 				759548912F76EEB1004D4B8F /* FBIHacked.jpg */,
 				746846C42F7A0E6C00EA9099 /* XI.png */,
+				746846C62F7A10CF00EA9099 /* notification.mp3 */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +156,7 @@
 				752EDF3A2F75B7B000164E97 /* Cookie.png in Resources */,
 				752EDF3B2F75B7B000164E97 /* CookieState2.png in Resources */,
 				75E2EAAE2F7454CD00296A7C /* matrix code nfi.ttf in Resources */,
+				746846C72F7A10CF00EA9099 /* notification.mp3 in Resources */,
 				752EDF822F75BDB500164E97 /* Cookies.png in Resources */,
 				746846C52F7A0E6C00EA9099 /* XI.png in Resources */,
 			);

@@ -3,6 +3,7 @@
 
 import SwiftUI
 internal import Combine
+import AVFoundation
 
 // ObservableObject to trigger notifications from anywhere
 class NotificationManager: ObservableObject {
@@ -10,12 +11,26 @@ class NotificationManager: ObservableObject {
     @Published var message: String = ""
     @Published var isVisible: Bool = false
     var dismissTask: Task<Void, Never>? = nil
+    
+    private var audioPlayer: AVAudioPlayer?
+    
+    private func playNotificationSound() {
+        guard let url = Bundle.main.url(forResource: "notification", withExtension: "wav") ??
+                        Bundle.main.url(forResource: "notification", withExtension: "mp3") else { return }
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+        } catch {
+            print("Failed to play sound: \(error)")
+        }
+    }
 
     func show(message: String, duration: Double = 2.0) {
         self.message = message
         withAnimation {
             isVisible = true
         }
+        self.playNotificationSound()
         dismissTask?.cancel()
         dismissTask = Task { @MainActor in
             try? await Task.sleep(nanoseconds: UInt64(duration * 1_000_000_000))
