@@ -40,110 +40,116 @@ struct ContentViewCookie: View
     //Ider is a chud
     var body: some View {
         
-        VStack {
-            Text("Time left: " + String(timeLeft) + " seconds.")
+        ZStack {
+            Color.black
+            VStack {
+                Text("Time left: " + String(timeLeft) + " seconds.")
+                    .font(.headline)
+                    .foregroundColor(Color.white)
+                    .onReceive(timer, perform:  { time in
+                        if timeLeft>=0{
+                            self.timeLeft -= 1
+                            isPressTwo = true
+                        }
+                    })
+                Text("Cookies Thwarted: " + String(cookiesThwarted))
+                    .font(.largeTitle)
+                    .foregroundColor(Color.white)
+                
+                //            ZStack(alignment: .leading) {
+                //                Rectangle()
+                //                    .frame(width: 300, height: 20)
+                //                    .opacity(0.3)
+                //                    .foregroundColor(.gray)
+                //                Rectangle()
+                //                    .frame(width: progress2 * 300, height: 20)
+                //                    .foregroundColor(.green)
+                //                    .animation(.easeInOut, value: progress2)
+                //            }
+                Button(){
+                    falling4 = -900.0
+                    falling5 = CGFloat.random(in: -100.0...100.0)
+                    progress2+=0.01
+                }
+                label: {
+                    Image("Cookies")
+                        .resizable()
+                        .interpolation(.none)
+                        .scaledToFill()
+                        .frame(width: 100, height: 100)
+                }
+                .offset(y: falling4)
+                .offset(x: falling5)
                 .font(.largeTitle)
-                .onReceive(timer, perform:  { time in
-                    if timeLeft>=0{
-                        self.timeLeft -= 1
-                        isPressTwo = true
+                .onReceive(timer2, perform:  { time in
+                    self.falling4 += rateOfFall
+                    if falling4 > 600.0{
+                        falling4 = -900.0
+                        falling5 = CGFloat.random(in: -150.0...150.0)
                     }
                 })
-            Text("Cookies Thwarted: " + String(cookiesThwarted))
-                .font(.largeTitle)
-
-//            ZStack(alignment: .leading) {
-//                Rectangle()
-//                    .frame(width: 300, height: 20)
-//                    .opacity(0.3)
-//                    .foregroundColor(.gray)
-//                Rectangle()
-//                    .frame(width: progress2 * 300, height: 20)
-//                    .foregroundColor(.green)
-//                    .animation(.easeInOut, value: progress2)
-//            }
-            Button(){
-                falling4 = -900.0
-                falling5 = CGFloat.random(in: -100.0...100.0)
-                progress2+=0.01
-            }
-            label: {
-                Image("Cookies")
-                    .resizable()
-                    .interpolation(.none)
-                    .scaledToFill()
-                    .frame(width: 100, height: 100)
-            }
-            .offset(y: falling4)
-            .offset(x: falling5)
-            .font(.largeTitle)
-            .onReceive(timer2, perform:  { time in
-                self.falling4 += rateOfFall
-                if falling4 > 600.0{
-                    falling4 = -900.0
-                    falling5 = CGFloat.random(in: -150.0...150.0)
-                }
-            })
-            
-            Button(){
-                falling = -900.0
-                falling1 = CGFloat.random(in: -100.0...100.0)
-                progress2+=0.01
                 
-            }
-            label: {
-                Image("Cookies")
-                    .resizable()
-                    .interpolation(.none)
-                    .scaledToFill()
-                    .frame(width: 100, height: 100)
-            }
-            .offset(y: falling)
-            .offset(x: falling1)
-            .font(.largeTitle)
-            .onReceive(timer2, perform:  { time in
-                self.falling += rateOfFall
-                if falling > 600.0{
+                Button(){
                     falling = -900.0
-                    falling1 = CGFloat.random(in: -150.0...150.0)
-                }
-            })
-            
-            Button(){
-                falling2 = -900.0
-                falling3 = CGFloat.random(in: -100.0...100.0)
-                progress2+=0.01
-                cookiesThwarted += 1
-                
-                
-            }
-            label: {
-                Image("Cookies")
-                    .resizable()
-                    .interpolation(.none)
-                    .scaledToFill()
-                    .frame(width: 100, height: 100)
-            }
-            .offset(y: falling2)
-            .offset(x: falling3)
-            .font(.largeTitle)
-            .onReceive(timer2, perform:  { time in
-                self.falling2 += rateOfFall1
-                if falling2 > 600.0{
-                    falling2 = -900.0
-                    falling3 = CGFloat.random(in: -150.0...150.0)
+                    falling1 = CGFloat.random(in: -100.0...100.0)
+                    progress2+=0.01
                     
                 }
-                if timeLeft==0{
-                    if cookiesThwarted >= 3 {
-                        userWinState += 1
-                    }
-                        screen4=true
+                label: {
+                    Image("Cookies")
+                        .resizable()
+                        .interpolation(.none)
+                        .scaledToFill()
+                        .frame(width: 100, height: 100)
                 }
-            })
+                .offset(y: falling)
+                .offset(x: falling1)
+                .font(.largeTitle)
+                .onReceive(timer2, perform:  { time in
+                    self.falling += rateOfFall
+                    if falling > 600.0{
+                        falling = -900.0
+                        falling1 = CGFloat.random(in: -150.0...150.0)
+                    }
+                })
+                
+                Button(){
+                    falling2 = -900.0
+                    falling3 = CGFloat.random(in: -100.0...100.0)
+                    progress2+=0.01
+                    cookiesThwarted += 1
+                    
+                    
+                }
+                label: {
+                    Image("Cookies")
+                        .resizable()
+                        .interpolation(.none)
+                        .scaledToFill()
+                        .frame(width: 100, height: 100)
+                }
+                .offset(y: falling2)
+                .offset(x: falling3)
+                .font(.largeTitle)
+                .onReceive(timer2, perform:  { time in
+                    self.falling2 += rateOfFall1
+                    if falling2 > 600.0{
+                        falling2 = -900.0
+                        falling3 = CGFloat.random(in: -150.0...150.0)
+                        
+                    }
+                    if timeLeft==0{
+                        if cookiesThwarted >= 3 {
+                            userWinState += 1
+                        }
+                        screen4=true
+                    }
+                })
+            }
         }
+        .ignoresSafeArea()
             
-        }
+    }//
 }//
 #Preview{
     ContentViewCookie(screen4: .constant(false),userWinState: .constant(1))

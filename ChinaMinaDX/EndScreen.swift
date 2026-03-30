@@ -17,7 +17,7 @@ struct EndScreen: View {
     
     let messageOne: String = "This is ex-cia agent John Kiriakou, your phone has been seized by the FBI. Luckily you were able to fend of one of the CCP’s attacks before we shut their operation down. Unfortunantly some of your information was uploaded, expect to get a few more spam calls, next time we might have to get the hummus out."
     
-    let messageNone: String = "This is ex-cia agent John Kiriakou, your phone has been seized by the FBI. Unfortunantly you werent able to fend of the CCP’s attacks before we shut their operation down. Expect a call from me in the next few days, untill then lay low. Were going to bring the hummus out. \n -John"
+    let messageNone: String = "This is ex-CIA agent John Kiriakou, your phone has been seized by the FBI. Unfortunantly you weren't able to fend of the CCP’s attacks before we shut their operation down. Expect a call from me in the next few days, untill then lay low. We're going to bring the hummus out. \n -John"
     
     var message: String {
         if userWinState == 0 {
@@ -32,6 +32,8 @@ struct EndScreen: View {
         return ""
     }
     
+    
+    
     var body: some View {
         
         
@@ -42,10 +44,12 @@ struct EndScreen: View {
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .edgesIgnoringSafeArea(.all)
                 //.blur(radius: 10, opaque: true)
-            Text("Hello, " + userData.userName + ". \n" + message)
+            //TextEffect(text: message)
+            TextEffect(text: "Hello, " + userData.userName + ". \n" + message)
                 .background(Color.black)
                 .foregroundColor(.white)
                 .padding(20)
+                .bold()
         }
     }
 }
@@ -57,3 +61,4 @@ struct EndScreen_Previews: PreviewProvider {
         EndScreen(userWinState: 0, userData: .constant(UserData(userName: "Ider", passWord: "")))
     }
 }
+
