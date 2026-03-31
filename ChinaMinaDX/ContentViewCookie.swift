@@ -7,149 +7,90 @@
 
 import SwiftUI
 internal import Combine
+struct Cookie: Identifiable{
+    let id: Int
+    var x: CGFloat
+    var y: CGFloat
+    var speed: CGFloat
+    mutating func fall(screenHeight: CGFloat = 600){
+        y += speed
+        if y > screenHeight{
+            reset()
+        }
+    }
+    mutating func reset(){
+        y = -900
+        x=CGFloat.random(in: -150...150)
+    }
+    mutating func thwart(){
+        reset()
+    }
+    
+    
+}
 struct ContentViewCookie: View
 {
     @Binding var screen4: Bool
     @Binding var userWinState: Int
     @State private var cookiesThwarted = 0
-    
-    @State private var isLoggedIn = false
-    @State private var screen2 = false
-    @State private var isPressTwo: Bool = false
-    @State private var isBarDone: Bool = true
-    @State private var counter = 0
-    @State private var counter1 = 0
-    @State private var progress: CGFloat = 0.0
-    @State private var progress2: CGFloat = 0.0
-    @State private var falling: CGFloat = -700.0
-    @State private var falling1: CGFloat = -100.0
-    @State private var falling2: CGFloat = -1000.0
-    @State private var falling3: CGFloat = -100.0
-    @State private var falling4: CGFloat = -1300.0
-    @State private var falling5: CGFloat = -20.0
-    @State private var rateOfFall: CGFloat = 6.0
-    @State private var rateOfFall1: CGFloat = 5.0
-    @State private var rateOfFall2: CGFloat = 7.0
     @State private var timeLeft = 10
-    @State private var gravity = 9.81
-    @State private var china = false
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    let timer2 = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
-    let timer1 = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
-
     //Ider is a chud
+    //harvey is undeserving of life
+    
+    @State private var cookies: [Cookie] = [
+        Cookie(id: 0, x: -100, y: -700, speed: 6.0),
+        Cookie(id: 1, x: -20, y: -1300,  speed: 6.0),
+        Cookie(id: 2, x: -100, y: -1000, speed: 5.0),
+    ]
+    let timer  = Timer.publish(every: 1,    on: .main, in: .common).autoconnect()
+    let timer2 = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
     var body: some View {
-        
-        ZStack {
+        ZStack{
             Color.black
             VStack {
-                Text("Time left: " + String(timeLeft) + " seconds.")
+                Text("Time left: \(timeLeft) seconds.")
                     .font(.headline)
-                    .foregroundColor(Color.white)
-                    .onReceive(timer, perform:  { time in
-                        if timeLeft>=0{
-                            self.timeLeft -= 1
-                            isPressTwo = true
+                    .foregroundColor(.white)
+                    .onReceive(timer) { _ in
+                        if timeLeft > 0 {
+                            timeLeft -= 1
                         }
-                    })
-                Text("Cookies Thwarted: " + String(cookiesThwarted))
+                    }
+                
+                Text("Cookies Thwarted: \(cookiesThwarted)")
                     .font(.largeTitle)
-                    .foregroundColor(Color.white)
-                
-                //            ZStack(alignment: .leading) {
-                //                Rectangle()
-                //                    .frame(width: 300, height: 20)
-                //                    .opacity(0.3)
-                //                    .foregroundColor(.gray)
-                //                Rectangle()
-                //                    .frame(width: progress2 * 300, height: 20)
-                //                    .foregroundColor(.green)
-                //                    .animation(.easeInOut, value: progress2)
-                //            }
-                Button(){
-                    falling4 = -900.0
-                    falling5 = CGFloat.random(in: -100.0...100.0)
-                    progress2+=0.01
-                }
-                label: {
-                    Image("Cookies")
-                        .resizable()
-                        .interpolation(.none)
-                        .scaledToFill()
-                        .frame(width: 100, height: 100)
-                }
-                .offset(y: falling4)
-                .offset(x: falling5)
-                .font(.largeTitle)
-                .onReceive(timer2, perform:  { time in
-                    self.falling4 += rateOfFall
-                    if falling4 > 600.0{
-                        falling4 = -900.0
-                        falling5 = CGFloat.random(in: -150.0...150.0)
-                    }
-                })
-                
-                Button(){
-                    falling = -900.0
-                    falling1 = CGFloat.random(in: -100.0...100.0)
-                    progress2+=0.01
-                    
-                }
-                label: {
-                    Image("Cookies")
-                        .resizable()
-                        .interpolation(.none)
-                        .scaledToFill()
-                        .frame(width: 100, height: 100)
-                }
-                .offset(y: falling)
-                .offset(x: falling1)
-                .font(.largeTitle)
-                .onReceive(timer2, perform:  { time in
-                    self.falling += rateOfFall
-                    if falling > 600.0{
-                        falling = -900.0
-                        falling1 = CGFloat.random(in: -150.0...150.0)
-                    }
-                })
-                
-                Button(){
-                    falling2 = -900.0
-                    falling3 = CGFloat.random(in: -100.0...100.0)
-                    progress2+=0.01
+                    .foregroundColor(.white)
+            }
+            ForEach($cookies) { $cookie in
+                Button {
                     cookiesThwarted += 1
-                    
-                    
-                }
-                label: {
+                    cookie.thwart()
+                } label: {
                     Image("Cookies")
                         .resizable()
                         .interpolation(.none)
                         .scaledToFill()
                         .frame(width: 100, height: 100)
                 }
-                .offset(y: falling2)
-                .offset(x: falling3)
-                .font(.largeTitle)
-                .onReceive(timer2, perform:  { time in
-                    self.falling2 += rateOfFall1
-                    if falling2 > 600.0{
-                        falling2 = -900.0
-                        falling3 = CGFloat.random(in: -150.0...150.0)
-                        
-                    }
-                    if timeLeft==0{
-                        if cookiesThwarted >= 3 {
-                            userWinState += 1
-                        }
-                        screen4=true
-                    }
-                })
+                .offset(x: cookie.x, y: cookie.y)
             }
         }
         .ignoresSafeArea()
-            
-    }//
+        .onReceive(timer2) { _ in
+            for i in cookies.indices {
+                cookies[i].fall()
+            }
+            checkGameOver()
+        }
+    }
+    private func checkGameOver(){
+        if timeLeft==0{
+            if cookiesThwarted >= 3{
+                userWinState += 1
+            }
+            screen4=true
+        }
+    }
 }//
 #Preview{
     ContentViewCookie(screen4: .constant(false),userWinState: .constant(1))
