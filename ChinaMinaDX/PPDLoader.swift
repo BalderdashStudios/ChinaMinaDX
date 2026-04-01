@@ -80,23 +80,23 @@ func loadPPDRecords() -> [PPDRecord] {
     ]
  
     guard let url = candidates.compactMap({ $0 }).first else {
-        print("PPDLoader ❌ Could not find PPD_database_export.json in bundle")
+        print("PPDLoader Could not find PPD_database_export.json in bundle")
         return []
     }
  
-    print("PPDLoader ✅ Found file at: \(url)")
+    print("PPDLoader Found file at: \(url)")
  
     guard let data = try? Data(contentsOf: url) else {
-        print("PPDLoader ❌ Could not read file data")
+        print("PPDLoader Could not read file data")
         return []
     }
  
     do {
         let records = try JSONDecoder().decode([PPDRecord].self, from: data)
-        print("PPDLoader ✅ Loaded \(records.count) records")
+        print("PPDLoader Loaded \(records.count) records")
         return records
     } catch {
-        print("PPDLoader ❌ Decode error: \(error)")
+        print("PPDLoader Decode error: \(error)")
         return []
     }
 }
