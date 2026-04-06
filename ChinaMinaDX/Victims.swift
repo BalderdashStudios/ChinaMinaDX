@@ -6,6 +6,8 @@ struct Victims: View {
     @State private var alert2 = false
     @Binding var screen2: Bool
     
+    @StateObject private var notificationManager = NotificationManager()
+    
     @Binding var userData : UserData
 
     var body: some View {
@@ -55,7 +57,7 @@ struct Victims: View {
                                         // Add custom buttons here. A default "OK" button is provided otherwise.
                                 Button("在窃取您的", role: .cancel) {
                                         screen2=true
-                                    }
+                                        }
                                     } message: {
                                         // Add a detailed message text.
                                         Text("Click点击the升级upgrade入数button 界面界面to re-enter the data entry interface.")

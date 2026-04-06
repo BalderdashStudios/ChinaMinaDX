@@ -15,9 +15,9 @@ struct EndScreen: View {
     
     let messageBoth: String = "This is ex-CIA agent John Kiriakou, your phone has been seized by the FBI. Luckily you were able to fend of all of the CCP’s attacks before we shut their operation down. Remember next time you might not be that lucky, we might have to get the hummus out.\n -John"
     
-    let messageOne: String = "This is ex-CIA agent John Kiriakou, your phone has been seized by the FBI. Luckily you were able to fend of one of the CCP’s attacks before we shut their operation down. Unfortunantly some of your information was uploaded, expect to get a few more spam calls, next time we might have to get the hummus out.\n -John"
+    let messageOne: String = "This is ex-CIA agent John Kiriakou, your phone has been seized by the FBI. Luckily you were able to fend off one of the CCP’s attacks before we shut their operation down. Unfortunantly some of your information was uploaded, expect to get a few more spam calls, next time we might have to get the hummus out.\n -John"
     
-    let messageNone: String = "This is ex-CIA agent John Kiriakou, your phone has been seized by the FBI. Unfortunantly you weren't able to fend of the CCP’s attacks before we shut their operation down. Expect a call from me in the next few days, untill then lay low. We're going to bring the hummus out. \n -John"
+    let messageNone: String = "This is ex-CIA agent John Kiriakou, your phone has been seized by the FBI. Unfortunantly you weren't able to fend off the CCP’s attacks before we shut their operation down. Expect a call from me in the next few days, untill then lay low. We're going to bring the hummus out. \n -John"
     
     var message: String {
         if userWinState == 0 {
@@ -45,7 +45,7 @@ struct EndScreen: View {
                 .edgesIgnoringSafeArea(.all)
                 //.blur(radius: 10, opaque: true)
             //TextEffect(text: message)
-            TextEffect(text: "Hello, " + userData.userName + ". \n" + message)
+            TextEffect(text: "Hello, " + userData.userName + ". \n" + message, speed: 0.08)
                 .background(Color.black)
                 .foregroundColor(.white)
                 .padding(20)

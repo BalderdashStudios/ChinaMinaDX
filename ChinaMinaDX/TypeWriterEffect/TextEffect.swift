@@ -10,8 +10,9 @@ internal import Combine
 struct TextEffect: View {
     
     let text: String
+    var speed: Double = 0.05
     @State private var displayCharacters = ""
-    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    let timer: Publishers.Autoconnect<Timer.TimerPublisher>
     var body: some View {
         Text(displayCharacters)
         //.font(Font. custom( "Bebas Neue", size: 45))
@@ -24,7 +25,14 @@ struct TextEffect: View {
                 }
             }
     }
+    
+    init(text: String, speed: Double = 0.05) {
+        self.text = text
+        self.speed = speed
+        self.timer = Timer.publish(every: speed, on: .main, in: .common).autoconnect()
+    }
 }
+
 #Preview {
     
     TextEffect(text: "Hello")

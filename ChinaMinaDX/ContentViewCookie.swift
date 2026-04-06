@@ -8,6 +8,8 @@
 import SwiftUI
 internal import Combine
 struct Cookie: Identifiable{
+    
+    
     let id: Int
     var x: CGFloat
     var y: CGFloat
@@ -30,6 +32,7 @@ struct Cookie: Identifiable{
 }
 struct ContentViewCookie: View
 {
+    @StateObject private var notificationManager = NotificationManager()
     @Binding var screen4: Bool
     @Binding var userWinState: Int
     @State private var cookiesThwarted = 0
